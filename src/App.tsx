@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './style.scss'
 import './App.css'
-let gameArray = ['','','','','','','','','']
+let gameArray = [0,1,2,3,4,5,6,7,8]
 const winner:any = (() => {
   const check: any = (array: any) => {
     const isTrue = false
@@ -34,7 +34,7 @@ const winner:any = (() => {
         resetButton.setAttribute('type','submit')
         resetButton.addEventListener('click',()=>{
             
-          gameArray = ['','','','','','','','',''];
+          gameArray = [0,1,2,3,4,5,6,7];
         });
         resetButton.textContent = 'restart';
         endPoint.appendChild(p);
@@ -51,7 +51,7 @@ const winner:any = (() => {
   const build: any = (array: any) => {
     let count = 0
 
-    const body = document.querySelector('body')
+ 
     const container = document.querySelector('.container')
     for(let i =0; i<array.length; i++){
       const cell = document.createElement('div')
