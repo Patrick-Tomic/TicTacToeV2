@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './style.scss'
@@ -34,7 +34,7 @@ const winner:any = (() => {
         resetButton.setAttribute('type','submit')
         resetButton.addEventListener('click',()=>{
             
-          gameArray = [0,1,2,3,4,5,6,7];
+          gameArray = [0,1,2,3,4,5,6,7,8];
         });
         resetButton.textContent = 'restart';
         endPoint.appendChild(p);
@@ -48,49 +48,62 @@ const winner:any = (() => {
   })()
  
  
-  const build: any = (array: any) => {
+   /* const build: any = (array: any) => {
+    
     let count = 0
-
- 
+   
+    count++
     const container = document.querySelector('.container')
     for(let i =0; i<array.length; i++){
       const cell = document.createElement('div')
-      cell.addEventListener('mouseover',() => {
-        cell.style.background = 'grey'
-      })
-      cell.addEventListener('mouseout',() => {
-        cell.style.background = 'white;'})
-        cell.addEventListener('click',() => {
-          if(array[i] = 'X' || array[i] =='O'){
-          
-          }else{ 
-            if(count%2 === 0){
-              array.splice(i,1,'X')
-              winner.check(gameArray)
-              cell.innerHTML = array[i]
-            }else{
-              array.splice(i,1,'O')
-              winner.check(gameArray)
-              cell.innerHTML = array[i]
-            }
-          }
-        count++
-        })
-        cell.setAttribute('style','width:10vw; height:15vh;display:flex; justify-content:center; align-items:center; border:1px solid black; background-color:white; border-radius:25px;');
+       cell.addEventListener('click',() => {
+      if(array[i] = 'X' || array[i] =='O'){
+      
+      }else{ 
+        if(count%2 === 0){
+          array.splice(i,1,'X')
+          winner.check(gameArray)
+          cell.innerHTML = array[i]
+        }else{
+          array.splice(i,1,'O')
+          winner.check(gameArray)
+          cell.innerHTML = array[i]
+        }
         cell.innerHTML = array[i]
         container?.appendChild(cell)
     }
-  }
-  build(gameArray)
+  } 
  
+  */
 function App() {
+
+  useEffect(() => {
+    const cell: any = document.querySelectorAll('#cell')
+    cell.forEach((cell: any) => {
+      cell.addEventListener('mouseover',() => {
+        cell.style.background = 'grey'
+      })
+      cell.addEventListener('mouseleave',() => {
+        cell.style.background = 'white;'})
+        
+        
+      cell.setAttribute('style','width:10vw; height:15vh;display:flex; justify-content:center; align-items:center; border:1px solid black; background-color:white; border-radius:25px;');
+    });
+    
+  })
+  const board = gameArray.map((value:any) => {
+    return(
+      <div id='cell'>
+        {value}
+      </div>
+    )
+  })
+ 
   
- 
- 
   return (
     <>
     <div className='container'>
-     
+     {board}
     </div>
     </>
   )
