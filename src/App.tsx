@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Node from './node'
+import Game from './game'
 import './style.scss'
 import './App.css'
-let gameArray = [0,1,2,3,4,5,6,7,8]
+let gameArray = ['','','','','','','','','']
 const winner:any = (() => {
   const check: any = (array: any) => {
     const isTrue = false
@@ -34,7 +35,7 @@ const winner:any = (() => {
         resetButton.setAttribute('type','submit')
         resetButton.addEventListener('click',()=>{
             
-          gameArray = [0,1,2,3,4,5,6,7,8];
+          gameArray = ['','','','','','','','',''];
         });
         resetButton.textContent = 'restart';
         endPoint.appendChild(p);
@@ -44,9 +45,11 @@ const winner:any = (() => {
      }
      return {check};
   }
-    
+
   })()
- 
+  const game = new Game([0,1,2,3,4,5,6,7,8])
+  game.buildTree(game.arr)
+  
  
    /* const build: any = (array: any) => {
     
